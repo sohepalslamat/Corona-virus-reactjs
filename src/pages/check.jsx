@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
-class StatsPage extends Component {
+class Check extends Component {
     state = {  } 
     render() { 
         return (
             <div>
+                Check
 
             </div>
         );
     }
 }
  
-export default StatsPage;
+export default Check;
