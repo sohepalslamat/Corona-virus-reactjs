@@ -1,15 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react"
 
 class Check extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <div>
-                Check
+    state = {}
 
-            </div>
-        );
+    render() {
+        return <div>Check</div>
     }
 }
- 
-export default Check;
+
+export default Check

@@ -1,3 +1,9 @@
 {
-    "nuxt.isNuxtApp": false
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": true }, 
+    "editor.formatOnSave": true, 
+    "eslint.alwaysShowStatus": true, 
+    "files.autoSave": "onFocusChange",
+    "eslint.debug": true,
+    "eslint.format.enable": true,
+    "eslint.lintTask.enable": true
 }
