@@ -5,5 +5,6 @@
     "files.autoSave": "onFocusChange",
     "eslint.debug": true,
     "eslint.format.enable": true,
-    "eslint.lintTask.enable": true
+    "eslint.lintTask.enable": true,
+    "nuxt.isNuxtApp": false
 }
