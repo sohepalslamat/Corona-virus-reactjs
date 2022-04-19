@@ -17,6 +17,7 @@ function Home() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        document.title = "Corona statistics in the world"
         fetchData()
             .then(({ countries, worldStat }) => {
                 setCountries(countries.countries_stat)
@@ -29,14 +30,18 @@ function Home() {
     }, [])
     const show = () => {
         if (loading) {
-            return <div>Loading...</div>
+            return (
+                <div style={{ height: "500px", fontSize: "30px" }}>
+                    Loading...
+                </div>
+            )
         } else {
             return (
                 <div>
-                    <div className="row align-items-center justify-content-center text-white">
+                    <div className="row align-items-center justify-content-center text-white mx-0">
                         <GlobalStats data={worldStat} />
                     </div>
-                    <div className="row align-items-center justify-content-center my-2">
+                    <div className="row align-items-center justify-content-center mx-0">
                         <CountriesStats data={countries} />
                     </div>
                 </div>
@@ -45,7 +50,7 @@ function Home() {
     }
     return (
         <div>
-            <div className="row align-items-center justify-content-center text-white">
+            <div className="row align-items-center justify-content-center text-white mx-0">
                 <div className="col-8 fs-1 m-2 p-2">
                     <span className="text-black">
                         Corona statistics in the world

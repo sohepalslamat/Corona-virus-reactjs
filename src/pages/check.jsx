@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 
 function Check() {
-    const [count, setCount] = useState(0)
-
     useEffect(() => {
+        document.title = `Check Yourself`
         return function cleanup() {}
     }, [])
 
     return (
         <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>Click me</button>
+            <div style={{ height: "500px", fontSize: "30px" }} className="mt-5">
+                Soon
+            </div>
         </div>
     )
 }
