@@ -9,7 +9,7 @@ function App() {
     return (
         <div className="App">
             <NavBar />
-            <Router>
+            <Router basename="/corona-virus-reactjs">
                 <ActinosBar />
                 <Routes>
                     <Route path="/home" element={<Home />} />
