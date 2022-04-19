@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import api from "../plugins/axios"
+import React, { useState } from "react"
+import PropTypes from "prop-types"
 
 const defItems = (data) => {
     return [
@@ -26,32 +26,10 @@ const defItems = (data) => {
     ]
 }
 
-const fetchData = async () => {
-    const { data } = await api.get("worldstat.php")
-    return data
-}
+function GlobalStats({ data }) {
+    const [items] = useState(defItems(data))
 
-function GlobalStats() {
-    const [items, setItems] = useState(null)
-
-    useEffect(() => {
-        fetchData()
-            .then((data) => {
-                const newData = defItems(data)
-                setItems(newData)
-            })
-            .finally(() => {})
-    }, [])
-
-    return (
-        <React.Fragment>
-            {items ? (
-                showCards(items)
-            ) : (
-                <div className="text-black">loading...</div>
-            )}
-        </React.Fragment>
-    )
+    return <React.Fragment>{showCards(items)}</React.Fragment>
 }
 
 function card(item) {
@@ -71,6 +49,9 @@ function showCards(items) {
         newItems.push(card(item))
     }
     return newItems
+}
+GlobalStats.propTypes = {
+    data: PropTypes.object.isRequired,
 }
 
 export default GlobalStats

@@ -1,23 +1,11 @@
-import { useState, useEffect } from "react"
-import api from "../plugins/axios"
+import React, { useState } from "react"
+import PropTypes from "prop-types"
 
-const fetchData = async () => {
-    const { data } = await api.get("cases_by_country.php")
-    return data
-}
+const CountriesStats = ({ data }) => {
+    const [countries] = useState(data)
 
-const CountriesStats = () => {
-    const [countries, setCountries] = useState(null)
-
-    useEffect(() => {
-        fetchData()
-            .then((result) => {
-                setCountries(result.countries_stat)
-            })
-            .catch(() => {})
-    }, [])
     return (
-        <div>
+        <div className="col-11">
             <div>{countries ? showList(countries) : <div>Loading...</div>}</div>
         </div>
     )
@@ -25,15 +13,35 @@ const CountriesStats = () => {
 
 function showList(items) {
     const newItems = []
-    for (const item of items) {
+    for (const [index, item] of items.entries()) {
         const element = (
-            <li key={item.country_name}>
-                {item.country_name}:{item.cases}
-            </li>
+            <tr key={item.country_name}>
+                <th scope="row">{index + 1}</th>
+                <td>{item.country_name}</td>
+                <td>{item.cases}</td>
+                <td>{item.new_cases}</td>
+                <td>{item.deaths}</td>
+            </tr>
         )
         newItems.push(element)
     }
-    return <ul>{newItems}</ul>
+    return (
+        <table className="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Country Name</th>
+                    <th scope="col">Cases</th>
+                    <th scope="col">New Cases</th>
+                    <th scope="col">Deaths</th>
+                </tr>
+            </thead>
+            <tbody>{newItems}</tbody>
+        </table>
+    )
+}
+CountriesStats.propTypes = {
+    data: PropTypes.array.isRequired,
 }
 
 export default CountriesStats

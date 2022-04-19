@@ -4,10 +4,7 @@ function Check() {
     const [count, setCount] = useState(0)
 
     useEffect(() => {
-        console.log("come")
-        return function cleanup() {
-            console.log("clean up")
-        }
+        return function cleanup() {}
     }, [])
 
     return (
