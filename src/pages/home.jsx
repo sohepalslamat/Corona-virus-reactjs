@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
-import CountriesStats from "../components/CountriesStats"
+import CountriesStats from "../features/countries/CountriesStats"
 import GlobalStats from "../components/GlobalStats"
 import api from "../plugins/axios"
+import { useSelector, useDispatch } from "react-redux"
+import { setCountries } from "../features/countries/countriesSlice"
 
 const fetchData = async () => {
     const [{ data: countries }, { data: worldStat }] = await Promise.all([
@@ -12,7 +14,9 @@ const fetchData = async () => {
 }
 
 function Home() {
-    const [countries, setCountries] = useState(null)
+    const countries = useSelector((state) => state.countries.value)
+    const dispatch = useDispatch()
+    // const [countries, setCountries] = useState(null)
     const [worldStat, setWorldStat] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -20,7 +24,7 @@ function Home() {
         document.title = "Corona statistics in the world"
         fetchData()
             .then(({ countries, worldStat }) => {
-                setCountries(countries.countries_stat)
+                dispatch(setCountries(countries.countries_stat))
                 setWorldStat(worldStat)
             })
             .catch(() => {})

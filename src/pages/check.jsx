@@ -1,6 +1,9 @@
 import React, { useEffect } from "react"
+import { useSelector } from "react-redux"
+import CountriesStats from "../features/countries/CountriesStats"
 
 function Check() {
+    const countries = useSelector((state) => state.countries.value)
     useEffect(() => {
         document.title = `Check Yourself`
         return function cleanup() {}
@@ -8,45 +11,13 @@ function Check() {
 
     return (
         <div>
-            <div style={{ height: "500px", fontSize: "30px" }} className="mt-5">
-                Soon
+            <div className="mt-5">
+                <div className="row align-items-center justify-content-center mx-0">
+                    <CountriesStats data={countries} />
+                </div>
             </div>
         </div>
     )
 }
-// import React, { Component } from "react"
-// class Check extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             count: 0,
-//         }
-//     }
-
-//     componentDidMount() {
-//         document.title = `You clicked ${this.state.count} times`
-//     }
-//     componentDidUpdate() {
-//         document.title = `You clicked ${this.state.count} times`
-//     }
-//     componentWillUnmount() {
-//         console.log("unmount")
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <p>You clicked {this.state.count} times</p>
-//                 <button
-//                     onClick={() =>
-//                         this.setState({ count: this.state.count + 1 })
-//                     }
-//                 >
-//                     Click me
-//                 </button>
-//             </div>
-//         )
-//     }
-// }
 
 export default Check

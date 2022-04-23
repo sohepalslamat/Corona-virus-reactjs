@@ -5,7 +5,7 @@ const CountriesStats = ({ data }) => {
     const [countries] = useState(data)
 
     return (
-        <div className="col-11">
+        <div className="col-12 col-sm-11">
             <div>{countries ? showList(countries) : <div>Loading...</div>}</div>
         </div>
     )
