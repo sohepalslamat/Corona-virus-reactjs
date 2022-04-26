@@ -7,10 +7,10 @@ class NavBar extends Component {
             <nav aria-label="breadcrumb" className="container">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                        <Link to={"/home"}>Home</Link>
+                        <Link to={""}>Home</Link>
                     </li>
                     <li className="breadcrumb-item">
-                        <Link to={"/check-yourself"}>Check Yourself</Link>
+                        <Link to={"check-yourself"}>Check Yourself</Link>
                     </li>
                 </ol>
             </nav>

@@ -3,35 +3,34 @@ import CountriesStats from "../features/countries/CountriesStats"
 import GlobalStats from "../components/GlobalStats"
 import api from "../plugins/axios"
 import { useSelector, useDispatch } from "react-redux"
-import { setCountries } from "../features/countries/countriesSlice"
+import { fetchCountries, countries } from "../features/countries/countriesSlice"
 
 const fetchData = async () => {
-    const [{ data: countries }, { data: worldStat }] = await Promise.all([
-        api.get("cases_by_country.php"),
-        api.get("worldstat.php"),
-    ])
-    return { countries, worldStat }
+    const { data: worldStat } = await api.get("worldstat.php")
+    return worldStat
 }
 
 function Home() {
-    const countries = useSelector((state) => state.countries.value)
+    const countriesFromStore = useSelector(countries)
     const dispatch = useDispatch()
-    // const [countries, setCountries] = useState(null)
     const [worldStat, setWorldStat] = useState(null)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         document.title = "Corona statistics in the world"
+        console.log("1")
         fetchData()
-            .then(({ countries, worldStat }) => {
-                dispatch(setCountries(countries.countries_stat))
+            .then(async (worldStat) => {
+                countriesFromStore.length == 0
+                    ? await dispatch(fetchCountries())
+                    : null
                 setWorldStat(worldStat)
             })
             .catch(() => {})
             .finally(() => {
                 setLoading(false)
             })
-    }, [])
+    }, [dispatch])
     const show = () => {
         if (loading) {
             return (
@@ -46,7 +45,7 @@ function Home() {
                         <GlobalStats data={worldStat} />
                     </div>
                     <div className="row align-items-center justify-content-center mx-0">
-                        <CountriesStats data={countries} />
+                        <CountriesStats data={countriesFromStore} />
                     </div>
                 </div>
             )

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 
 const CountriesStats = ({ data }) => {
@@ -25,6 +25,12 @@ function showList(items) {
         )
         newItems.push(element)
     }
+    useEffect(() => {
+        document.title = `Check Yourself`
+        console.log("7")
+
+        return function cleanup() {}
+    }, [])
     return (
         <table className="table table-striped">
             <thead>

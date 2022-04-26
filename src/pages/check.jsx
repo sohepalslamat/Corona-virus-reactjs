@@ -6,6 +6,8 @@ function Check() {
     const countries = useSelector((state) => state.countries.value)
     useEffect(() => {
         document.title = `Check Yourself`
+        console.log("1")
+
         return function cleanup() {}
     }, [])
 
