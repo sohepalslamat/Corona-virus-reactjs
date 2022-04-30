@@ -1,6 +1,6 @@
 import "./App.css"
 import Home from "./pages/home"
-import Check from "./pages/check"
+import Countries from "./pages/allCountries"
 import Layout from "./pages/layout"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
@@ -14,8 +14,8 @@ function App() {
                         <Route exact path="" element={<Home />} />
                         <Route
                             exact
-                            path="check-yourself"
-                            element={<Check />}
+                            path="all-countries"
+                            element={<Countries />}
                         />
                     </Route>
                 </Routes>

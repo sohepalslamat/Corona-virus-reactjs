@@ -27,8 +27,6 @@ function showList(items) {
     }
     useEffect(() => {
         document.title = `Check Yourself`
-        console.log("7")
-
         return function cleanup() {}
     }, [])
     return (

@@ -4,13 +4,13 @@ class NavBar extends Component {
     state = {}
     render() {
         return (
-            <nav aria-label="breadcrumb" className="container">
+            <nav aria-label="breadcrumb" className="container mt-2">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <Link to={""}>Home</Link>
                     </li>
                     <li className="breadcrumb-item">
-                        <Link to={"check-yourself"}>Check Yourself</Link>
+                        <Link to={"all-countries"}>All Countries</Link>
                     </li>
                 </ol>
             </nav>

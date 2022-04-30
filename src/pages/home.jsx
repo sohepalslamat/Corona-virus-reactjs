@@ -4,6 +4,7 @@ import GlobalStats from "../components/GlobalStats"
 import api from "../plugins/axios"
 import { useSelector, useDispatch } from "react-redux"
 import { fetchCountries, countries } from "../features/countries/countriesSlice"
+import { Link } from "react-router-dom"
 
 const fetchData = async () => {
     const { data: worldStat } = await api.get("worldstat.php")
@@ -18,7 +19,6 @@ function Home() {
 
     useEffect(() => {
         document.title = "Corona statistics in the world"
-        console.log("1")
         fetchData()
             .then(async (worldStat) => {
                 countriesFromStore.length == 0
@@ -45,8 +45,11 @@ function Home() {
                         <GlobalStats data={worldStat} />
                     </div>
                     <div className="row align-items-center justify-content-center mx-0">
-                        <CountriesStats data={countriesFromStore} />
+                        <CountriesStats
+                            data={countriesFromStore.slice(0, 10)}
+                        />
                     </div>
+                    <Link to={"all-countries#up"}>See More</Link>
                 </div>
             )
         }
