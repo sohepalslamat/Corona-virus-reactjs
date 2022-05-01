@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 
 const CountriesStats = ({ data }) => {
-    const [countries] = useState(data)
+    const [countries, setCountries] = useState(data)
+
+    useEffect(() => {
+        setCountries(data)
+        return function cleanup() {}
+    }, [data])
 
     return (
         <div className="col-12 col-sm-11">
@@ -25,12 +30,8 @@ function showList(items) {
         )
         newItems.push(element)
     }
-    useEffect(() => {
-        document.title = `Check Yourself`
-        return function cleanup() {}
-    }, [])
     return (
-        <table className="table table-striped">
+        <table className="table table-striped text-center">
             <thead>
                 <tr>
                     <th scope="col">#</th>

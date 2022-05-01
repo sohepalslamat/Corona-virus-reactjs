@@ -18,12 +18,10 @@ function Home() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        document.title = "Corona statistics in the world"
+        document.title = "Coronavirus statistics in the world"
         fetchData()
             .then(async (worldStat) => {
-                countriesFromStore.length == 0
-                    ? await dispatch(fetchCountries())
-                    : null
+                countriesFromStore.length == 0 ? await dispatch(fetchCountries()) : null
                 setWorldStat(worldStat)
             })
             .catch(() => {})
@@ -33,11 +31,7 @@ function Home() {
     }, [dispatch])
     const show = () => {
         if (loading) {
-            return (
-                <div style={{ height: "500px", fontSize: "30px" }}>
-                    Loading...
-                </div>
-            )
+            return <div style={{ height: "500px", fontSize: "30px" }}>Loading...</div>
         } else {
             return (
                 <div>
@@ -45,22 +39,18 @@ function Home() {
                         <GlobalStats data={worldStat} />
                     </div>
                     <div className="row align-items-center justify-content-center mx-0">
-                        <CountriesStats
-                            data={countriesFromStore.slice(0, 10)}
-                        />
+                        <CountriesStats data={countriesFromStore.slice(0, 10)} />
                     </div>
-                    <Link to={"all-countries#up"}>See More</Link>
+                    <Link to={"all-countries"}>See All</Link>
                 </div>
             )
         }
     }
     return (
-        <div>
+        <div className="text-center">
             <div className="row align-items-center justify-content-center text-white mx-0">
                 <div className="col-8 fs-1 m-2 p-2">
-                    <span className="text-black">
-                        Corona statistics in the world
-                    </span>
+                    <span className="text-black">Coronavirus statistics in the world</span>
                     <span className="bg-danger px-3 mx-1">Live</span>
                 </div>
             </div>

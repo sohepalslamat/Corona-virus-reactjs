@@ -34,10 +34,7 @@ function GlobalStats({ data }) {
 
 function card(item) {
     return (
-        <div
-            key={item.title}
-            className={`col-10 col-sm-5 m-2 bg-${item.color} card p-2`}
-        >
+        <div key={item.title} className={`col-10 col-sm-5 m-2 bg-${item.color} card p-2`}>
             <div className="card-title fs-3">{item.title}</div>
             <div className="card-title fs-3">{item.value}</div>
         </div>

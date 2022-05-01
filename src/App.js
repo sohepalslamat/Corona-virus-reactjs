@@ -12,11 +12,7 @@ function App() {
                     <Route path="/" element={<Layout />}>
                         {/* <Route path="/" element={<Navigate to="/home" />} /> */}
                         <Route exact path="" element={<Home />} />
-                        <Route
-                            exact
-                            path="all-countries"
-                            element={<Countries />}
-                        />
+                        <Route exact path="all-countries" element={<Countries />} />
                     </Route>
                 </Routes>
             </Router>

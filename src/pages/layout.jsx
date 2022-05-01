@@ -9,13 +9,9 @@ const Layout = () => {
             <NavBar />
             <ActionsBar />
             <Outlet />
-            <div className="bg-light bg-gradien-500 py-4">
+            <div className="bg-light bg-gradien-500 py-4 text-center">
                 © 2022 — Reactjs — Made with 💜 by{" "}
-                <a
-                    href="https://www.linkedin.com/in/sohep-alslamat"
-                    target="_blank"
-                    rel="noreferrer"
-                >
+                <a href="https://www.linkedin.com/in/sohep-alslamat" target="_blank" rel="noreferrer">
                     Sohaib Alslamat
                 </a>
             </div>
